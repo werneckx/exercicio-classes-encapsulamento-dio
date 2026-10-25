@@ -14,8 +14,12 @@ public class Carro {
     }
 
     public void ligar() {
-        this.ligado = true;
-        System.out.println("Carro ligado!");
+        if (!this.ligado) {
+            this.ligado = true;
+            System.out.println("Carro ligado!");
+        } else {
+            System.out.println("O carro já está ligado.");
+        }
     }
 
     public void desligar() {
@@ -23,6 +27,8 @@ public class Carro {
             System.out.println("Não é possível desligar o carro enquanto ele estiver em movimento. Pare o carro primeiro.");
         } else if (this.marcha != 0) {
             System.out.println("Não é possível desligar o carro enquanto ele estiver em marcha. Coloque o carro em ponto morto (marcha 0) antes de desligar.");
+        } else if (!this.ligado) {
+            System.out.println("Carro já está desligado!");
         } else {
             this.ligado = false;
             System.out.println("Carro desligado!");
@@ -210,20 +216,24 @@ public class Carro {
     }
 
     public void verificarVelocidade() {
-        System.out.println("Velocidade atual: " + this.velocidade + " km/h");
+        if (!this.ligado) {
+            System.out.println("O carro está desligado. Ligue o carro para verificar a velocidade.");
+        } else {
+            System.out.println("Velocidade atual: " + this.velocidade + " km/h");
+        }
     }
 
     public void trocarMarcha(int novaMarcha) {
 
-        if (novaMarcha < 0 || novaMarcha > 6) {
-            System.out.println("Marcha inválida. As marchas válidas são de 0 a 6.");
+        if (!this.ligado) {
+            System.out.println("O carro está desligado. Ligue o carro antes de trocar a marcha.");
         } else if (!(novaMarcha == this.marcha + 1 || novaMarcha == this.marcha - 1)) {
             System.out.println("Marcha só pode ser trocada diretamente para a próxima ou anterior. Troque para a marcha correta.");
-        } else if (this.ligado) {
+        } else if (novaMarcha < 0 || novaMarcha > 6) {
+            System.out.println("Marcha inválida. As marchas válidas são de 0 a 6.");
+        } else {
             this.marcha = novaMarcha;
             System.out.println("Marcha trocada para: " + this.marcha);
-        } else {
-            System.out.println("O carro está desligado. Ligue o carro antes de trocar a marcha.");
         }
     }
 

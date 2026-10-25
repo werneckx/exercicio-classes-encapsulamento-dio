@@ -23,4 +23,4 @@ Siga as seguintes regras na implementação
      - se estiver na 5ª marcha sua velocidade pode estar entre 81km e 100km
      - se estiver na 6ª marcha sua velocidade pode estar entre 101km e 120km
    - [PRONTO] O carro podera ser desligado se estiver em ponto morto (marcha 0) e sua velocidade em 0 km
-   - O carro só pode virar para esquerda/direita se sua velocidade for de no mínimi 1km e no máximo 40km;
+   - [PRONTO] O carro só pode virar para esquerda/direita se sua velocidade for de no mínimi 1km e no máximo 40km;
